@@ -86,10 +86,12 @@
 
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import SearchDialog from '@/components/SearchDialog'
 import type { SearchItem } from '@/lib/search'
+import { cn } from '@/lib/utils'
 
 /**
  * Navigation link configuration.
@@ -119,9 +121,18 @@ interface NavigationProps {
  */
 export default function Navigation({ searchItems }: NavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev)
+  }
+
+  const isLinkActive = (href: string) => {
+    if (href === '/') {
+      return pathname === href
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`)
   }
 
   useEffect(() => {
@@ -150,7 +161,11 @@ export default function Navigation({ searchItems }: NavigationProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white hover:text-white font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                aria-current={isLinkActive(link.href) ? 'page' : undefined}
+                className={cn(
+                  'text-white hover:text-white font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
+                  isLinkActive(link.href) && 'text-teal hover:text-teal-dark'
+                )}
               >
                 {link.label}
               </Link>
@@ -192,7 +207,11 @@ export default function Navigation({ searchItems }: NavigationProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block text-white hover:text-white font-semibold py-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                aria-current={isLinkActive(link.href) ? 'page' : undefined}
+                className={cn(
+                  'block text-white hover:text-white font-semibold py-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
+                  isLinkActive(link.href) && 'text-teal hover:text-teal-dark'
+                )}
                 onClick={() => setIsMobileMenuOpen(false)}
                 role="menuitem"
               >
