@@ -41,7 +41,22 @@ Use this format:
   - Follow-up (task IDs in TODO.md): N/A
 
 ## Open questions
-- Q:
-  - Context:
-  - Needed input:
-  - Task (BLOCKED) ID:
+- Q: What is the canonical short brand used in UI/PWA?
+  - Context: Navigation/footer and PWA assets currently say “YD Marketer” / “YDM”.
+  - Needed input: Short display name + PWA short_name + Apple web app title.
+  - Task (BLOCKED) ID: T-083
+
+- Q: What bookkeeping services should exist and what are the slugs?
+  - Context: Existing `/services/*` routes are marketing-specific and drive sitemap/search/nav.
+  - Needed input: Service list + slugs + short copy spec + whether to redirect old routes.
+  - Task (BLOCKED) ID: T-084
+
+- Q: What is the production domain/email and do we have social profiles?
+  - Context: SEO structured data and docs include `yourdedicatedmarketer.com` and `contact@yourdedicatedmarketer.com`.
+  - Needed input: `NEXT_PUBLIC_SITE_URL`, `CONTACT_EMAIL`, and social URLs (or “none”).
+  - Task (BLOCKED) ID: T-085
+
+- Q: Keep or hide Blog/Case Studies during the bookkeeping transition?
+  - Context: Current content is marketing-focused; nav/sitemap/search should match strategy.
+  - Needed input: Decision + initial bookkeeping topics/case studies or placeholder policy.
+  - Task (BLOCKED) ID: T-086
