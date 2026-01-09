@@ -1,10 +1,20 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { submitContactForm } from '@/lib/actions'
+
+const { logWarn, logError } = vi.hoisted(() => ({
+  logWarn: vi.fn(),
+  logError: vi.fn(),
+}))
+
+vi.mock('@/lib/logger', () => ({
+  logWarn,
+  logError,
+  logInfo: vi.fn(),
+}))
 
 let currentIp = '203.0.113.1'
 
 vi.mock('next/headers', () => ({
-  headers: () => ({
+  headers: async () => ({
     get: (key: string) => {
       if (key === 'x-forwarded-for') {
         return currentIp
@@ -13,6 +23,8 @@ vi.mock('next/headers', () => ({
     },
   }),
 }))
+
+import { submitContactForm } from '@/lib/actions'
 
 const buildPayload = (email: string) => ({
   name: 'Test User',
@@ -25,6 +37,8 @@ const buildPayload = (email: string) => ({
 describe('contact form rate limiting', () => {
   beforeEach(() => {
     currentIp = '203.0.113.1'
+    logWarn.mockClear()
+    logError.mockClear()
   })
 
   it('enforces email limits even when the IP changes', async () => {
@@ -63,5 +77,18 @@ describe('contact form rate limiting', () => {
     })
 
     expect(response.success).toBe(false)
+    expect(logWarn).toHaveBeenCalledWith('Honeypot field triggered for contact form submission')
+    expect(logError).not.toHaveBeenCalled()
+  })
+
+  it('rejects submissions when the honeypot is filled with whitespace', async () => {
+    const response = await submitContactForm({
+      ...buildPayload('bot@example.com'),
+      website: ' ',
+    })
+
+    expect(response.success).toBe(false)
+    expect(logWarn).toHaveBeenCalledWith('Honeypot field triggered for contact form submission')
+    expect(logError).not.toHaveBeenCalled()
   })
 })

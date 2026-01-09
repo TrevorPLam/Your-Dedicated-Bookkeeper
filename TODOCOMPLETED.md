@@ -1,7 +1,7 @@
 # TODOCOMPLETED.md — Completed Tasks Archive
 
 Document Type: Workflow
-Last Updated: 2026-01-10
+Last Updated: 2026-01-09
 Source: Completed tasks moved from `TODO.md`
 
 This file stores completed work in the same schema as `TODO.md`.
@@ -123,7 +123,7 @@ Priority: P2
 Type: BUG
 Owner: AGENT
 Status: DONE
-Completed: 2026-01-10
+Completed: 2026-01-09
 Context:
 - Services page links to /services/strategy, /services/crm, /services/funnel, /services/reporting
 - These routes don't exist (404)
@@ -138,6 +138,28 @@ Dependencies: None
 Effort: S
 Notes:
 - Decision: added placeholder “Coming Soon” pages for strategy, CRM, funnel, and reporting services to avoid 404s while keeping links intact.
+
+### T-076: Fix honeypot logging as error
+Priority: P2
+Type: BUG
+Owner: AGENT
+Status: DONE
+Completed: 2026-01-09
+Context:
+- Honeypot field triggers ZodError which logs as error in actions.ts
+- Should be handled as spam detection (warn level), not error
+- Creates noise in error monitoring
+Acceptance Criteria:
+- [x] T-076.1: Decide on implementation path (pre-Zod check or specific error catch).
+- [x] T-076.2: Implement the chosen solution to ensure honeypot submissions are logged as warnings.
+- [x] T-076.3: Add a unit test to verify the new logging behavior.
+References:
+- /lib/actions.ts
+- /__tests__/lib/actions.rate-limit.test.ts
+Dependencies: None
+Effort: XS
+Notes:
+- Verification failed locally: `vitest` not found in environment when running `npm test -- __tests__/lib/actions.rate-limit.test.ts`.
 
 ### T-023: Document middleware.ts security headers
 Priority: P1
