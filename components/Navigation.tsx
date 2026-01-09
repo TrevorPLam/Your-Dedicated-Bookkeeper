@@ -127,13 +127,13 @@ export default function Navigation({ searchItems }: NavigationProps) {
     setIsMobileMenuOpen((prev) => !prev)
   }
 
-  const isLinkActive = (href: string) => {
+  const isLinkActive = React.useCallback((href: string) => {
     if (href === '/') {
       return pathname === href
     }
 
     return pathname === href || pathname.startsWith(`${href}/`)
-  }
+  }, [pathname])
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
