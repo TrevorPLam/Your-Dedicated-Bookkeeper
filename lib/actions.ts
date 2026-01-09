@@ -74,7 +74,7 @@
 import { createHash } from 'crypto'
 import { headers } from 'next/headers'
 import { z } from 'zod'
-import { logError, logWarn, logInfo } from './logger'
+import { logError, logWarn, logInfo } from '@/lib/logger'
 import { escapeHtml, sanitizeEmailSubject, textToHtmlParagraphs } from './sanitize'
 import { validatedEnv } from './env'
 import { contactFormSchema, type ContactFormData } from '@/lib/contact-form-schema'
@@ -347,8 +347,7 @@ async function checkRateLimit(email: string, clientIp: string): Promise<boolean>
  */
 export async function submitContactForm(data: ContactFormData) {
   try {
-    const websiteValue = typeof data.website === 'string' ? data.website.trim() : ''
-    if (websiteValue.length > 0) {
+    if (data.website) {
       logWarn('Honeypot field triggered for contact form submission')
       return {
         success: false,
@@ -438,15 +437,16 @@ export async function submitContactForm(data: ContactFormData) {
 
     return { success: true, message: "Thank you for your message! We'll be in touch soon." }
   } catch (error) {
-    logError('Contact form submission error', error)
-
     if (error instanceof z.ZodError) {
+      logWarn('Contact form validation failed', { issues: error.issues })
       return {
         success: false,
         message: 'Please check your form inputs and try again.',
         errors: error.issues,
       }
     }
+
+    logError('Contact form submission error', error)
 
     return {
       success: false,

@@ -14,7 +14,7 @@ vi.mock('@/lib/logger', () => ({
 let currentIp = '203.0.113.1'
 
 vi.mock('next/headers', () => ({
-  headers: () => ({
+  headers: async () => ({
     get: (key: string) => {
       if (key === 'x-forwarded-for') {
         return currentIp
@@ -74,6 +74,17 @@ describe('contact form rate limiting', () => {
     const response = await submitContactForm({
       ...buildPayload('bot@example.com'),
       website: 'https://spam.example.com',
+    })
+
+    expect(response.success).toBe(false)
+    expect(logWarn).toHaveBeenCalledWith('Honeypot field triggered for contact form submission')
+    expect(logError).not.toHaveBeenCalled()
+  })
+
+  it('rejects submissions when the honeypot is filled with whitespace', async () => {
+    const response = await submitContactForm({
+      ...buildPayload('bot@example.com'),
+      website: ' ',
     })
 
     expect(response.success).toBe(false)
