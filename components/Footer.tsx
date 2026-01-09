@@ -1,15 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
-import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const services = [
-    { href: '/services/seo', label: 'SEO Services' },
-    { href: '/services/content', label: 'Content Marketing' },
-    { href: '/services/social', label: 'Social Media' },
-    { href: '/services/email', label: 'Email Marketing' },
+    { href: '/services/essentials', label: 'Essentials Books' },
+    { href: '/services/managed', label: 'Managed Books' },
+    { href: '/services/strategic', label: 'Strategic Finance' },
+    { href: '/services', label: 'All Services' },
   ]
 
   const company = [
@@ -25,12 +24,8 @@ export default function Footer() {
     { href: '/contact', label: 'Contact' },
   ]
 
-  const socialLinks = [
-    { href: '#', icon: Facebook, label: 'Facebook' },
-    { href: '#', icon: Twitter, label: 'Twitter' },
-    { href: '#', icon: Linkedin, label: 'LinkedIn' },
-    { href: '#', icon: Instagram, label: 'Instagram' },
-  ]
+  // Social links removed per T-085 (social profiles: none)
+  const socialLinks: Array<{ href: string; icon: React.ComponentType<{ size?: number }>; label: string }> = []
 
   return (
     <footer className="bg-charcoal text-white/80">
@@ -38,25 +33,27 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Column */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">YD Marketer</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">YD Bookkeeper</h3>
             <p className="text-white/70 mb-6">
-              Growth-focused marketing for small businesses. Strategic services that drive real results.
+              Professional bookkeeping for small businesses. Accurate financial records that keep you compliant and tax-ready.
             </p>
-            <div className="flex gap-4">
-              {socialLinks.map(social => {
-                const Icon = social.icon
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    className="text-white/60 hover:text-white transition-colors"
-                    aria-label={social.label}
-                  >
-                    <Icon size={20} />
-                  </a>
-                )
-              })}
-            </div>
+            {socialLinks.length > 0 && (
+              <div className="flex gap-4">
+                {socialLinks.map(social => {
+                  const Icon = social.icon
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      className="text-white/60 hover:text-white transition-colors"
+                      aria-label={social.label}
+                    >
+                      <Icon size={20} />
+                    </a>
+                  )
+                })}
+              </div>
+            )}
           </div>
 
           {/* Services Column */}

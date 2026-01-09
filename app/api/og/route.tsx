@@ -22,10 +22,10 @@ export async function GET(request: NextRequest) {
     return new Response('Invalid query parameters', { status: 400 })
   }
 
-  const title = escapeHtml(parseResult.data.title ?? 'Your Dedicated Marketer')
+  const title = escapeHtml(parseResult.data.title ?? 'Your Dedicated Bookkeeper')
   const description = escapeHtml(
     parseResult.data.description ??
-      'Digital marketing services that drive growth through SEO, content, and performance campaigns.'
+      'Professional bookkeeping services that keep you compliant and tax-ready with accurate financial records.'
   )
 
   return new ImageResponse(
@@ -59,9 +59,9 @@ export async function GET(request: NextRequest) {
             🚀
           </div>
           <div>
-            <div style={{ fontSize: 28, fontWeight: 700 }}>Your Dedicated Marketer</div>
+            <div style={{ fontSize: 28, fontWeight: 700 }}>Your Dedicated Bookkeeper</div>
             <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.75)' }}>
-              ROI-Obsessed Marketing Partners
+              Professional Bookkeeping Partners
             </div>
           </div>
         </div>
@@ -70,11 +70,11 @@ export async function GET(request: NextRequest) {
         <div style={{ fontSize: 22, color: 'rgba(255,255,255,0.85)', maxWidth: 900 }}>{description}</div>
 
         <div style={{ display: 'flex', gap: 16, fontSize: 18, color: 'rgba(255,255,255,0.75)' }}>
-          <span>Performance Marketing</span>
+          <span>Monthly Bookkeeping</span>
           <span>•</span>
-          <span>SEO & Content</span>
+          <span>Financial Reporting</span>
           <span>•</span>
-          <span>Lifecycle Campaigns</span>
+          <span>Compliance Services</span>
         </div>
       </div>
     ),

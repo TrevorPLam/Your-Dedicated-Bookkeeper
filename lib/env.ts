@@ -114,9 +114,9 @@ const envSchema = z.object({
    * Public site name for branding.
    * Used in page titles, OG tags, meta descriptions.
    * 
-   * @default 'Your Dedicated Marketer'
+   * @default 'Your Dedicated Bookkeeper'
    */
-  NEXT_PUBLIC_SITE_NAME: z.string().default('Your Dedicated Marketer'),
+  NEXT_PUBLIC_SITE_NAME: z.string().default('Your Dedicated Bookkeeper'),
 
   /**
    * Analytics tracking ID (optional).
@@ -140,9 +140,9 @@ const envSchema = z.object({
   /**
    * Email address to receive contact form submissions.
    * 
-   * @default 'contact@yourdedicatedmarketer.com'
+   * @default 'contact@yourdedicatedbookkeeper.com'
    */
-  CONTACT_EMAIL: z.string().email().default('contact@yourdedicatedmarketer.com'),
+  CONTACT_EMAIL: z.string().email().default('contact@yourdedicatedbookkeeper.com'),
 
   /**
    * Node environment (development, production, test).

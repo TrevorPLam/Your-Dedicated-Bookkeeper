@@ -10,7 +10,7 @@ import { z } from 'zod'
 
 const publicEnvSchema = z.object({
   NEXT_PUBLIC_SITE_URL: z.string().url().default('http://localhost:3000'),
-  NEXT_PUBLIC_SITE_NAME: z.string().default('Your Dedicated Marketer'),
+  NEXT_PUBLIC_SITE_NAME: z.string().default('Your Dedicated Bookkeeper'),
   NEXT_PUBLIC_ANALYTICS_ID: z.string().optional(),
 })
 

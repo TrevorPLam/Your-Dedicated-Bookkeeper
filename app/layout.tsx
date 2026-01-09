@@ -127,27 +127,27 @@ const plexSans = IBM_Plex_Sans({
 })
 
 const siteUrl = getPublicBaseUrl()
-const ogImageUrl = new URL('/api/og?title=Your%20Dedicated%20Marketer', siteUrl).toString()
+const ogImageUrl = new URL('/api/og?title=Your%20Dedicated%20Bookkeeper', siteUrl).toString()
 
 /**
  * Global metadata applied to all pages.
  * Child pages can override with their own metadata export.
  * 
- * Title template: "%s | Your Dedicated Marketer"
+ * Title template: "%s | Your Dedicated Bookkeeper"
  * - Child page title replaces %s
- * - Example: "SEO Services | Your Dedicated Marketer"
+ * - Example: "Essentials Books | Your Dedicated Bookkeeper"
  */
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Your Dedicated Marketer | Digital Marketing Services That Drive Results',
-    template: '%s | Your Dedicated Marketer',
+    default: 'Your Dedicated Bookkeeper | Professional Bookkeeping Services That Keep You Compliant',
+    template: '%s | Your Dedicated Bookkeeper',
   },
-  description: 'Expert digital marketing services for businesses that want to grow. We specialize in SEO, content marketing, social media, and email marketing that delivers real ROI.',
-  keywords: ['digital marketing', 'SEO services', 'content marketing', 'social media marketing', 'email marketing', 'marketing agency'],
-  authors: [{ name: 'Your Dedicated Marketer' }],
-  creator: 'Your Dedicated Marketer',
-  publisher: 'Your Dedicated Marketer',
+  description: 'Expert bookkeeping services for businesses that want accurate financial records. We specialize in monthly bookkeeping, financial reporting, and compliance services that keep you tax-ready.',
+  keywords: ['bookkeeping services', 'monthly bookkeeping', 'financial reporting', 'accounts payable', 'accounts receivable', 'bookkeeping company', 'small business bookkeeping'],
+  authors: [{ name: 'Your Dedicated Bookkeeper' }],
+  creator: 'Your Dedicated Bookkeeper',
+  publisher: 'Your Dedicated Bookkeeper',
   formatDetection: {
     email: false,
     address: false,
@@ -171,26 +171,25 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'Your Dedicated Marketer',
-    title: 'Your Dedicated Marketer | Digital Marketing Services That Drive Results',
+    siteName: 'Your Dedicated Bookkeeper',
+    title: 'Your Dedicated Bookkeeper | Professional Bookkeeping Services That Keep You Compliant',
     description:
-      'Expert digital marketing services for businesses that want to grow. We specialize in SEO, content marketing, social media, and email marketing that delivers real ROI.',
+      'Expert bookkeeping services for businesses that want accurate financial records. We specialize in monthly bookkeeping, financial reporting, and compliance services that keep you tax-ready.',
     images: [
       {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: 'Your Dedicated Marketer brand preview image',
+        alt: 'Your Dedicated Bookkeeper brand preview image',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Your Dedicated Marketer | Digital Marketing Services That Drive Results',
+    title: 'Your Dedicated Bookkeeper | Professional Bookkeeping Services That Keep You Compliant',
     description:
-      'Expert digital marketing services for businesses that want to grow. SEO, content, social media, and email marketing that delivers ROI.',
+      'Expert bookkeeping services for businesses that want accurate financial records. Monthly bookkeeping, financial reporting, and compliance services that keep you tax-ready.',
     images: [ogImageUrl],
-    creator: '@yourdedicatedmarketer',
   },
 }
 
@@ -209,7 +208,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="YDM" />
+        <meta name="apple-mobile-web-app-title" content="YD Bookkeeper" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
@@ -220,21 +219,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'Your Dedicated Marketer',
-              description: 'Expert digital marketing services for businesses that want to grow.',
+              name: 'Your Dedicated Bookkeeper',
+              description: 'Expert bookkeeping services for businesses that want accurate financial records.',
               url: siteUrl,
               logo: new URL('/logo.png', siteUrl).toString(),
               contactPoint: {
                 '@type': 'ContactPoint',
                 contactType: 'Customer Service',
-                email: 'contact@yourdedicatedmarketer.com',
+                email: 'contact@yourdedicatedbookkeeper.com',
               },
-              sameAs: [
-                'https://www.facebook.com/yourdedicatedmarketer',
-                'https://www.twitter.com/yourdedicatedmarketer',
-                'https://www.linkedin.com/company/yourdedicatedmarketer',
-                'https://www.instagram.com/yourdedicatedmarketer',
-              ],
               address: {
                 '@type': 'PostalAddress',
                 addressCountry: 'US',
@@ -253,7 +246,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebSite',
-              name: 'Your Dedicated Marketer',
+              name: 'Your Dedicated Bookkeeper',
               url: siteUrl,
               potentialAction: {
                 '@type': 'SearchAction',

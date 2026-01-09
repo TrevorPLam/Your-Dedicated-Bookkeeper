@@ -1,7 +1,7 @@
 {
-  "name": "Your Dedicated Marketer",
-  "short_name": "YDM",
-  "description": "Expert digital marketing services for businesses that want to grow. SEO, content marketing, social media, and email marketing that delivers real ROI.",
+  "name": "Your Dedicated Bookkeeper",
+  "short_name": "YD Bookkeeper",
+  "description": "Expert bookkeeping services for businesses that want accurate financial records. Monthly bookkeeping, financial reporting, and compliance services that keep you tax-ready.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -26,19 +26,19 @@
       "type": "image/png"
     }
   ],
-  "categories": ["business", "marketing", "productivity"],
+  "categories": ["business", "finance", "productivity"],
   "shortcuts": [
     {
       "name": "Contact Us",
       "short_name": "Contact",
-      "description": "Get in touch with our marketing team",
+      "description": "Get in touch with our bookkeeping team",
       "url": "/contact",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "View Services",
       "short_name": "Services",
-      "description": "Explore our marketing services",
+      "description": "Explore our bookkeeping services",
       "url": "/services",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
