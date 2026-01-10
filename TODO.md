@@ -235,25 +235,6 @@ Effort: M
 ## 🟦 PHASE 3: Enhancements (P3)
 > Nice-to-have improvements for Diamond Standard.
 
-### T-075: Add case studies to search index
-Priority: P3
-Type: FEATURE
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Search includes blog posts and static pages but not case studies
-- Easy enhancement to improve site search
-Acceptance Criteria:
-- [ ] T-075.1: Import caseStudies from lib/case-studies.ts
-- [ ] T-075.2: Map case studies to SearchItem format
-- [ ] T-075.3: Include in getSearchIndex() return
-References:
-- /lib/search.ts
-- /lib/case-studies.ts
-Dependencies: None
-Effort: XS
-
 ### T-077: Add focus trap to mobile navigation menu
 Priority: P3
 Type: QUALITY

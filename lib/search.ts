@@ -13,6 +13,7 @@
  * **ARCHITECTURE**:
  * - Static pages: HARDCODED in `staticPages` array (manual update required!)
  * - Blog posts: Dynamic from lib/blog.ts
+ * - Case studies: Dynamic from lib/case-studies.ts
  * - Consumed by: SearchDialog, SearchPage components
  *
  * **MAINTENANCE CRITICAL**: When adding new pages:
@@ -23,8 +24,9 @@
  * **AI ITERATION HINTS**:
  * - Adding a page? Add to staticPages array with id, title, description, href, type, tags
  * - Tags improve search relevance (include keywords users might search for)
- * - type: 'Page' for static pages, 'Blog' for posts
+ * - type: 'Page' for static pages, 'Blog' for posts, 'Case Study' for case studies
  * - Blog posts auto-included via getAllPosts()
+ * - Case studies auto-included via caseStudies
  *
  * **SEARCH ALGORITHM** (client-side in SearchDialog):
  * - Searches: title + description + tags (case-insensitive)
@@ -35,7 +37,7 @@
  * - [ ] Generate staticPages from app/ filesystem scan
  * - [ ] Add fuzzy search (Fuse.js or similar)
  * - [ ] Add search analytics tracking
- * - [ ] Add case studies to search index
+ * - [x] Add case studies to search index
  *
  * **EDGE RUNTIME**: Uses fs via lib/blog.ts.
  * Routes consuming this MUST be force-static.
@@ -66,23 +68,24 @@
  */
 
 import { getAllPosts } from '@/lib/blog'
+import { caseStudies } from '@/lib/case-studies'
 
 /**
  * Search index item structure.
  * 
- * @property id - Unique identifier (prefixed with 'page-' or 'post-')
+ * @property id - Unique identifier (prefixed with 'page-', 'post-', or 'case-study-')
  * @property title - Display title
  * @property description - Search snippet / meta description
  * @property href - URL path
- * @property type - 'Page' for static pages, 'Blog' for posts
+ * @property type - 'Page' for static pages, 'Blog' for posts, 'Case Study' for case studies
  * @property tags - Optional keywords for search matching
  */
-export type SearchItem = {
+export interface SearchItem {
   id: string
   title: string
   description: string
   href: string
-  type: 'Page' | 'Blog'
+  type: 'Page' | 'Blog' | 'Case Study'
   tags?: string[]
 }
 
@@ -166,5 +169,14 @@ export function getSearchIndex(): SearchItem[] {
     tags: [post.category, post.author],
   }))
 
-  return [...staticPages, ...posts]
+  const studies = caseStudies.map((study) => ({
+    id: `case-study-${study.slug}`,
+    title: study.title,
+    description: study.description,
+    href: `/case-studies/${study.slug}`,
+    type: 'Case Study' as const,
+    tags: [study.industry, ...study.services],
+  }))
+
+  return [...staticPages, ...posts, ...studies]
 }
