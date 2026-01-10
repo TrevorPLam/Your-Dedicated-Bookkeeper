@@ -10,7 +10,7 @@ Performed an accessibility review focused on navigation, search, and interactive
 - Search modal and `/search` page
 - Contact form inputs
 - Accordion UI component
-- Primary marketing pages
+- Primary site pages (including legacy marketing content during transition)
 
 ## Checks Performed
 

@@ -93,7 +93,7 @@ Every page exports a `metadata` object:
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Page Title | Your Dedicated Marketer',
+  title: 'Page Title | Your Dedicated Bookkeeper',
   description: 'Page description for SEO.',
   // Optional: OpenGraph, Twitter, etc.
 }

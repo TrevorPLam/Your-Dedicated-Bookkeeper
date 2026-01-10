@@ -85,7 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2024-12-26
 
 ### Added
-- Initial release of Your Dedicated Marketer marketing website
+- Initial release of Your Dedicated Marketer marketing website (legacy brand before transition to Your Dedicated Bookkeeper)
 - Next.js 14 App Router with static site generation
 - Blog functionality with MDX support
 - Contact form with email integration via Resend

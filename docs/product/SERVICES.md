@@ -1,4 +1,6 @@
-# Your Dedicated Marketer - Service Offerings
+# Your Dedicated Bookkeeper - Service Offerings
+
+> **Transition note:** The service definitions below are legacy marketing offerings from the pre-transition site. Bookkeeping service tiers are still being defined and should replace this content once finalized.
 
 ## Purpose
 Drive growth through structured marketing systems, content engines, acquisition funnels, and analytics.

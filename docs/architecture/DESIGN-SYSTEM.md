@@ -107,7 +107,7 @@ Error Red:      #EF4444  (Error states only)
 - Neutral
 - Highly legible
 - Designed for UI & dashboards
-- Works across marketing + app surfaces
+- Works across bookkeeping + app surfaces
 
 **Usage:**
 - Headings
@@ -329,7 +329,7 @@ Based on 4px base unit:
 ```html
 <nav class="bg-[#0F1115] shadow-sm sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <div class="text-2xl font-bold text-white">YD Marketer</div>
+    <div class="text-2xl font-bold text-white">YD Bookkeeper</div>
     <div class="flex items-center gap-8">
       <a href="#" class="text-white/80 hover:text-white font-medium transition-colors">Services</a>
       <a href="#" class="text-white/80 hover:text-white font-medium transition-colors">Pricing</a>

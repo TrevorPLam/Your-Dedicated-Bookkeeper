@@ -1,4 +1,4 @@
-# Your Dedicated Marketer
+# Your Dedicated Bookkeeper
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Next.js](https://img.shields.io/badge/Next.js-15.5.2-black)
@@ -6,7 +6,7 @@
 ![Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-orange)
 ![Diamond Standard](https://img.shields.io/badge/Standard-Diamond-b91c1c)
 
-A high-performance, edge-ready marketing platform template built for speed, SEO, and maintainability. Designed to be the "Diamond Standard" for modern web development agencies.
+A high-performance, edge-ready bookkeeping services site template built for speed, SEO, and maintainability. This repository has transitioned from **Your Dedicated Marketer** to **Your Dedicated Bookkeeper**, and some legacy marketing content may still exist while the transition tasks are completed.
 
 ---
 
@@ -58,10 +58,10 @@ This repository adheres to a strict "Diamond Standard" of engineering excellence
 
 ```bash
 # Clone the repository
-git clone https://github.com/TrevorPLam/Your-Dedicated-Marketer.git
+git clone <repository-url>
 
 # Enter directory
-cd Your-Dedicated-Marketer
+cd Your-Dedicated-Bookkeeper
 
 # Install dependencies (legacy peer deps required for Cloudflare adapter)
 npm install --legacy-peer-deps
@@ -145,4 +145,4 @@ This project is licensed under the MIT License - see the `LICENSE` file for deta
 
 ---
 
-*maintained by Your Dedicated Marketer Team*
+*maintained by Your Dedicated Bookkeeper Team*

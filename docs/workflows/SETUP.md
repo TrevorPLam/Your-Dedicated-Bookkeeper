@@ -14,8 +14,8 @@
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/ydFirms/Your-Dedicated-Marketer.git
-cd Your-Dedicated-Marketer
+git clone <repository-url>
+cd Your-Dedicated-Bookkeeper
 ```
 
 ### 2. Select Node Version
@@ -111,7 +111,7 @@ git push origin main
 
 ## Project Structure
 ```
-Your-Dedicated-Marketer/
+Your-Dedicated-Bookkeeper/
 ├── app/                  # Next.js App Router pages
 ├── components/           # React components
 ├── content/             # MDX blog posts

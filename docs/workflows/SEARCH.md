@@ -4,7 +4,7 @@
 
 ## Overview
 
-The site search experience is implemented as a lightweight, client-side search that indexes blog posts and key marketing pages at build time. It uses in-memory filtering with no third-party service dependencies.
+The site search experience is implemented as a lightweight, client-side search that indexes blog posts and key site pages (including any legacy marketing content during the transition) at build time. It uses in-memory filtering with no third-party service dependencies.
 
 ## Search Solution
 

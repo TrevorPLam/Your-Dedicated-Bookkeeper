@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-This document tracks significant architectural decisions for the Your Dedicated Marketer marketing site.
+This document tracks significant architectural decisions for the Your Dedicated Bookkeeper site.
 
 ## Format
 
@@ -19,14 +19,14 @@ Each decision follows this structure:
 **Date**: 2024-12-26
 
 ### Context
-Need modern framework for marketing site with excellent performance, SEO, and developer experience. Options include Next.js, Astro, Remix, or plain React with Vite.
+Need modern framework for the bookkeeping site with excellent performance, SEO, and developer experience. Options include Next.js, Astro, Remix, or plain React with Vite.
 
 ### Decision
 Use Next.js 14 with App Router and static site generation.
 
 ### Alternatives Considered
 1. **Astro**: Great for content sites but less flexible for interactive components
-2. **Remix**: Excellent framework but overkill for static marketing site
+2. **Remix**: Excellent framework but overkill for static site
 3. **Vite + React**: More manual setup, less optimized for static generation
 
 ### Consequences
@@ -54,7 +54,7 @@ Use static generation for all pages, Server Actions for contact form.
 **Date**: 2024-12-26
 
 ### Context
-Marketing site needs reliable hosting with global CDN, automatic HTTPS, and zero cost for startup phase.
+The site needs reliable hosting with global CDN, automatic HTTPS, and zero cost for startup phase.
 
 ### Decision
 Deploy to Cloudflare Pages (free tier).
@@ -89,7 +89,7 @@ Use GitHub integration for automatic deployments on push to main.
 **Date**: 2024-12-26
 
 ### Context
-Need efficient, maintainable styling solution for marketing site with responsive design.
+Need efficient, maintainable styling solution for site with responsive design.
 
 ### Decision
 Use Tailwind CSS with custom configuration.

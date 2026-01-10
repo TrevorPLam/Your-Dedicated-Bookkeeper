@@ -1,6 +1,8 @@
-# Your Dedicated Marketer - Marketing Website
+# Your Dedicated Bookkeeper - Bookkeeping Services Website
 
-A modern, SEO-optimized marketing website built with Next.js 14, featuring a blog system, case studies, and comprehensive service pages.
+A modern, SEO-optimized bookkeeping services website built with Next.js 14, featuring a blog system, case studies, and comprehensive service pages.
+
+> **Transition note:** This repository has moved from **Your Dedicated Marketer** to **Your Dedicated Bookkeeper**. Legacy marketing copy/routes may still be present until the transition tasks are completed.
 
 ## ✨ Features
 
@@ -41,7 +43,7 @@ A modern, SEO-optimized marketing website built with Next.js 14, featuring a blo
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd Your-Dedicated-Marketer
+   cd Your-Dedicated-Bookkeeper
    ```
 
 2. **Install dependencies**
@@ -58,11 +60,11 @@ A modern, SEO-optimized marketing website built with Next.js 14, featuring a blo
    ```env
    # Application
    NEXT_PUBLIC_SITE_URL=http://localhost:3000
-   NEXT_PUBLIC_SITE_NAME=Your Dedicated Marketer
+   NEXT_PUBLIC_SITE_NAME=Your Dedicated Bookkeeper
 
    # Email Service (Resend)
    RESEND_API_KEY=your_resend_api_key_here
-   CONTACT_EMAIL=contact@yourdedicatedmarketer.com
+   CONTACT_EMAIL=contact@yourdedicatedbookkeeper.com
 
    # Optional Analytics
    NEXT_PUBLIC_ANALYTICS_ID=
@@ -366,4 +368,4 @@ For support, email contact@yourdedicatedmarketer.com or visit our [contact page]
 
 ---
 
-Built with ❤️ by Your Dedicated Marketer
+Built with ❤️ by Your Dedicated Bookkeeper

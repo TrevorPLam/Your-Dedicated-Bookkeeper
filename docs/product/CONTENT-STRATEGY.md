@@ -1,5 +1,7 @@
 # Content Strategy Guide
 
+> **Transition note:** This guide reflects legacy marketing content from before the transition to Your Dedicated Bookkeeper. Bookkeeping-focused content strategy should replace the sections below as decisions are finalized.
+
 ## Site Structure
 
 ```
@@ -10,7 +12,7 @@
 │   ├── /social           Social media detail
 │   └── /email            Email marketing detail
 ├── /pricing              Pricing tiers
-├── /about                About Your Dedicated Marketer
+├── /about                About Your Dedicated Bookkeeper
 ├── /case-studies         Client success stories
 ├── /blog                 Marketing insights and guides
 └── /contact              Contact form and booking
@@ -169,7 +171,7 @@ Schedule consultation
 ## About Page
 
 ### Our Story
-- Why Your Dedicated Marketer exists
+- Why Your Dedicated Bookkeeper exists
 - Problem we're solving
 - Our approach to marketing
 
