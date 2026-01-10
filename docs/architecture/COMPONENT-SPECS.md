@@ -1,5 +1,7 @@
 # Component Specifications
 
+> **Transition note:** The copy examples in this document are legacy marketing content from the pre-transition site. They should be updated to bookkeeping-focused messaging as part of the transition work.
+
 ## Homepage Components
 
 ### Hero Section

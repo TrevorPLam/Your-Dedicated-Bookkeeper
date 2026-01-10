@@ -329,7 +329,7 @@ import { ImageResponse } from '@vercel/og'
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
-  const title = searchParams.get('title') || 'Your Dedicated Marketer'
+  const title = searchParams.get('title') || 'Your Dedicated Bookkeeper'
 
   return new ImageResponse(
     (

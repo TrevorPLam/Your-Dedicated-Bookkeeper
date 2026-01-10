@@ -6,7 +6,7 @@
 > **See Also:** [CODEBASE-ANALYSIS.md](./CODEBASE-ANALYSIS.md), [DOCS_INDEX.md](../DOCS_INDEX.md)
 
 ## System Overview
-Your Dedicated Marketer is a static marketing website built with Next.js 14 and deployed to Cloudflare Pages. All pages are pre-rendered at build time for maximum performance. Contact form submissions are sent via Resend API.
+Your Dedicated Bookkeeper is a static website built with Next.js 14 and deployed to Cloudflare Pages. All pages are pre-rendered at build time for maximum performance. Contact form submissions are sent via Resend API.
 
 ## Infrastructure
 **Deployment Model**: Static Site Generation (SSG)  
@@ -15,13 +15,13 @@ Your Dedicated Marketer is a static marketing website built with Next.js 14 and 
 
 ## Components
 
-### Marketing Pages
+### Site Pages
 - **Purpose**: Public-facing website pages (home, services, about, contact)
 - **Technology**: Next.js 14 App Router with static generation
 - **Dependencies**: React 18, Tailwind CSS
 
 ### Blog System
-- **Purpose**: Content marketing and SEO
+- **Purpose**: Content publishing and SEO
 - **Technology**: MDX files processed at build time
 - **Dependencies**: next-mdx-remote or contentlayer
 
@@ -42,7 +42,7 @@ Next.js Server Action
     ↓
 Resend API
     ↓
-Email to YD Marketer inbox
+Email to YD Bookkeeper inbox
 ```
 
 ## Key Design Patterns

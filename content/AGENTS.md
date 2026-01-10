@@ -6,6 +6,8 @@ Applies To: Any agent working in content/
 ## Purpose
 This folder contains content managed as files (file-based CMS pattern). Currently only blog posts are stored here, with potential for expansion to other content types.
 
+> **Transition note:** The blog system is moving from the legacy marketing brand to Your Dedicated Bookkeeper. Defaults in `lib/blog.ts` still reference the legacy author/category values until the transition tasks update them.
+
 ---
 
 ## Folder Structure
@@ -49,8 +51,8 @@ featured: false              # Optional: Show on homepage (default: false)
 | `title` | string | ✅ | Displayed as h1, used in OG tags |
 | `description` | string | ✅ | Meta description, max ~160 chars |
 | `date` | string | ✅ | ISO date format (YYYY-MM-DD) |
-| `author` | string | ✅ | Falls back to "Your Dedicated Marketer Team" |
-| `category` | string | ✅ | Falls back to "Marketing" |
+| `author` | string | ✅ | Falls back to the legacy default ("Your Dedicated Marketer Team") in `lib/blog.ts` |
+| `category` | string | ✅ | Falls back to the legacy default ("Marketing") in `lib/blog.ts` |
 | `featured` | boolean | ❌ | Default: false |
 
 ---
@@ -91,8 +93,8 @@ MDX allows embedding React components, but currently the blog uses **pure Markdo
 title: "Your Post Title"
 description: "A brief description of your post for SEO and social sharing."
 date: "2026-01-06"
-author: "Your Dedicated Marketer Team"
-category: "Marketing"
+author: "Your Dedicated Bookkeeper Team"
+category: "Bookkeeping"
 featured: false
 ---
 
