@@ -166,7 +166,7 @@ export function getSearchIndex(): SearchItem[] {
     description: post.description,
     href: `/blog/${post.slug}`,
     type: 'Blog' as const,
-    tags: [post.category, post.author],
+    tags: [post.category, post.author].filter(Boolean),
   }))
 
   const studies = caseStudies.map((study) => ({
@@ -175,7 +175,7 @@ export function getSearchIndex(): SearchItem[] {
     description: study.description,
     href: `/case-studies/${study.slug}`,
     type: 'Case Study' as const,
-    tags: [study.industry, ...study.services],
+    tags: [study.industry, ...(Array.isArray(study.services) ? study.services : [])].filter(Boolean),
   }))
 
   return [...staticPages, ...posts, ...studies]
