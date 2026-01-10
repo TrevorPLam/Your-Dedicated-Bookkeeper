@@ -14,8 +14,8 @@
 
 ### 1. Clone Repository
 ```bash
-git clone <repository-url>
-cd Your-Dedicated-Bookkeeper
+git clone <repository-url> your-dedicated-bookkeeper
+cd your-dedicated-bookkeeper
 ```
 
 ### 2. Select Node Version
