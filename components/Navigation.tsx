@@ -197,8 +197,10 @@ export default function Navigation({ searchItems }: NavigationProps) {
       const activeElement = document.activeElement
 
       if (!activeElement || !menu.contains(activeElement)) {
-        firstElement.focus()
-        event.preventDefault()
+        if (activeElement === mobileMenuButtonRef.current) {
+          firstElement.focus()
+          event.preventDefault()
+        }
         return
       }
 
