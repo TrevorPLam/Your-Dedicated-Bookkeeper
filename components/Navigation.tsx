@@ -183,6 +183,10 @@ export default function Navigation({ searchItems }: NavigationProps) {
         return
       }
 
+      if (menu.offsetParent === null) {
+        // Menu is not visible (e.g., viewport resized to desktop), so don't trap focus
+        return
+      }
       if (focusableElements.length === 0) {
         event.preventDefault()
         return
