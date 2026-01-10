@@ -123,6 +123,7 @@ export default function Navigation({ searchItems }: NavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const mobileMenuRef = useRef<HTMLDivElement | null>(null)
   const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null)
+  const lastFocusedElementRef = useRef<HTMLElement | null>(null)
   const pathname = usePathname()
 
   const toggleMobileMenu = () => {
@@ -138,17 +139,6 @@ export default function Navigation({ searchItems }: NavigationProps) {
   }, [pathname])
 
   useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsMobileMenuOpen(false)
-      }
-    }
-
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [])
-
-  useEffect(() => {
     if (!isMobileMenuOpen) {
       return
     }
@@ -157,6 +147,11 @@ export default function Navigation({ searchItems }: NavigationProps) {
     if (!menu) {
       return
     }
+
+    lastFocusedElementRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
+
+    const previousBodyOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
 
     const getFocusableElements = (container: HTMLElement) => {
       const selector = [
@@ -173,27 +168,28 @@ export default function Navigation({ searchItems }: NavigationProps) {
 
     const focusableElements = getFocusableElements(menu)
     const focusFirstElement = () => {
-      const firstElement = focusableElements[0]
-      if (firstElement) {
-        firstElement.focus()
-      }
+      focusableElements[0]?.focus()
     }
 
     const frame = window.requestAnimationFrame(focusFirstElement)
 
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false)
+        return
+      }
+
       if (event.key !== 'Tab') {
         return
       }
 
-      const updatedFocusableElements = getFocusableElements(menu)
-      if (updatedFocusableElements.length === 0) {
+      if (focusableElements.length === 0) {
         event.preventDefault()
         return
       }
 
-      const firstElement = updatedFocusableElements[0]
-      const lastElement = updatedFocusableElements[updatedFocusableElements.length - 1]
+      const firstElement = focusableElements[0]
+      const lastElement = focusableElements[focusableElements.length - 1]
       const activeElement = document.activeElement
 
       if (!activeElement || !menu.contains(activeElement)) {
@@ -202,10 +198,17 @@ export default function Navigation({ searchItems }: NavigationProps) {
         return
       }
 
-      if (event.shiftKey && activeElement === firstElement) {
+      const activeIndex = focusableElements.findIndex((element) => element.contains(activeElement))
+      if (activeIndex === -1) {
+        firstElement.focus()
+        event.preventDefault()
+        return
+      }
+
+      if (event.shiftKey && activeIndex === 0) {
         lastElement.focus()
         event.preventDefault()
-      } else if (!event.shiftKey && activeElement === lastElement) {
+      } else if (!event.shiftKey && activeIndex === focusableElements.length - 1) {
         firstElement.focus()
         event.preventDefault()
       }
@@ -216,7 +219,14 @@ export default function Navigation({ searchItems }: NavigationProps) {
     return () => {
       window.cancelAnimationFrame(frame)
       document.removeEventListener('keydown', onKeyDown)
-      mobileMenuButtonRef.current?.focus()
+      document.body.style.overflow = previousBodyOverflow
+
+      const lastFocused = lastFocusedElementRef.current
+      if (lastFocused && document.contains(lastFocused)) {
+        lastFocused.focus()
+      } else {
+        mobileMenuButtonRef.current?.focus()
+      }
     }
   }, [isMobileMenuOpen])
 
