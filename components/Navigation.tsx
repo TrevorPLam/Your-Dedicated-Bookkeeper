@@ -84,7 +84,7 @@
 
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
@@ -121,6 +121,8 @@ interface NavigationProps {
  */
 export default function Navigation({ searchItems }: NavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null)
+  const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null)
   const pathname = usePathname()
 
   const toggleMobileMenu = () => {
@@ -145,6 +147,78 @@ export default function Navigation({ searchItems }: NavigationProps) {
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [])
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      return
+    }
+
+    const menu = mobileMenuRef.current
+    if (!menu) {
+      return
+    }
+
+    const getFocusableElements = (container: HTMLElement) => {
+      const selector = [
+        'a[href]',
+        'button:not([disabled])',
+        'input:not([disabled])',
+        'select:not([disabled])',
+        'textarea:not([disabled])',
+        '[tabindex]:not([tabindex="-1"])',
+      ].join(', ')
+
+      return Array.from(container.querySelectorAll<HTMLElement>(selector))
+    }
+
+    const focusableElements = getFocusableElements(menu)
+    const focusFirstElement = () => {
+      const firstElement = focusableElements[0]
+      if (firstElement) {
+        firstElement.focus()
+      }
+    }
+
+    const frame = window.requestAnimationFrame(focusFirstElement)
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab') {
+        return
+      }
+
+      const updatedFocusableElements = getFocusableElements(menu)
+      if (updatedFocusableElements.length === 0) {
+        event.preventDefault()
+        return
+      }
+
+      const firstElement = updatedFocusableElements[0]
+      const lastElement = updatedFocusableElements[updatedFocusableElements.length - 1]
+      const activeElement = document.activeElement
+
+      if (!activeElement || !menu.contains(activeElement)) {
+        firstElement.focus()
+        event.preventDefault()
+        return
+      }
+
+      if (event.shiftKey && activeElement === firstElement) {
+        lastElement.focus()
+        event.preventDefault()
+      } else if (!event.shiftKey && activeElement === lastElement) {
+        firstElement.focus()
+        event.preventDefault()
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      document.removeEventListener('keydown', onKeyDown)
+      mobileMenuButtonRef.current?.focus()
+    }
+  }, [isMobileMenuOpen])
 
   return (
     <nav className="bg-charcoal shadow-sm sticky top-0 z-50" role="navigation" aria-label="Primary">
@@ -183,6 +257,7 @@ export default function Navigation({ searchItems }: NavigationProps) {
             <SearchDialog items={searchItems} variant="mobile" />
             <button
               onClick={toggleMobileMenu}
+              ref={mobileMenuButtonRef}
               className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
@@ -198,6 +273,7 @@ export default function Navigation({ searchItems }: NavigationProps) {
       {isMobileMenuOpen && (
         <div
           id="mobile-menu"
+          ref={mobileMenuRef}
           className="md:hidden bg-charcoal border-t border-white/10"
           role="menu"
           aria-label="Mobile navigation"

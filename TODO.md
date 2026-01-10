@@ -239,19 +239,22 @@ Effort: M
 Priority: P3
 Type: QUALITY
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
 Context:
 - Mobile menu doesn't trap focus (accessibility gap)
 - Users can tab to elements behind the menu overlay
 Acceptance Criteria:
-- [ ] T-077.1: Implement focus trap when mobile menu is open
-- [ ] T-077.2: Focus first focusable element when menu opens
-- [ ] T-077.3: Return focus to hamburger button when menu closes
+- [x] T-077.1: Implement focus trap when mobile menu is open
+- [x] T-077.2: Focus first focusable element when menu opens
+- [x] T-077.3: Return focus to hamburger button when menu closes
 References:
 - /components/Navigation.tsx
 Dependencies: None
 Effort: S
+**Completed:**
+- Added focus trap logic for mobile menu, including initial focus and focus wrap.
+- Restored focus to the mobile menu toggle when the menu closes.
 
 ### T-078: Delete backup and unused files
 Priority: P3
