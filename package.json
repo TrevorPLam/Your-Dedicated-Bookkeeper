@@ -62,7 +62,7 @@
     "axe-core": "^4.11.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.39.2",
-    "eslint-config-next": "15.1.4",
+    "eslint-config-next": "16.1.1",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^17.0.0",
     "jsdom": "^27.4.0",
