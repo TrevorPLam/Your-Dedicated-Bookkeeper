@@ -260,19 +260,21 @@ Effort: S
 Priority: P3
 Type: CHORE
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
 Context:
 - eslint.config.mjs.bak is a backup file from ESLint migration
 - Clean up to reduce repo clutter
 Acceptance Criteria:
-- [ ] T-078.1: Delete eslint.config.mjs.bak
-- [ ] T-078.2: Verify pre-commit-config.yaml is in use or delete it
+- [x] T-078.1: Delete eslint.config.mjs.bak
+- [x] T-078.2: Verify pre-commit-config.yaml is in use or delete it
 References:
 - /eslint.config.mjs.bak
 - /pre-commit-config.yaml
 Dependencies: None
 Effort: XS
+**Completed:**
+- Deleted eslint.config.mjs.bak and removed unused pre-commit-config.yaml.
 
 ---
 
